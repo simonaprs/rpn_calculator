@@ -10,22 +10,22 @@ def calculate(expression):
     operators = {'+': operator.add, '-': operator.sub, '*': operator.mul, '/': operator.truediv, '%': operator.mod}
     int_lst = []
     expression_split = expression.split(' ')
-    expression_list = list(expression_split)
+    expression_lst = list(expression_split)
 
-    for i in range(0, len(expression_list)):
-        if expression_list[i].isdigit():
-            int_lst.append(expression_list[i])
-        elif not expression_list[i].isdigit() and i < len(expression_list) - 1 and expression_list[i + 1].isdigit():
-            result = operators[expression_list[i]](int(int_lst[len(int_lst) - 2]), int(int_lst[len(int_lst) - 1]))
+    for i in range(0, len(expression_lst)):
+        if expression_lst[i].isdigit():
+            int_lst.append(expression_lst[i])
+        elif not expression_lst[i].isdigit() and i < len(expression_lst) - 1 and expression_lst[i + 1].isdigit():
+            result = operators[expression_lst[i]](int(int_lst[len(int_lst) - 2]), int(int_lst[len(int_lst) - 1]))
             del int_lst[-2:]
             int_lst.append(result)
-        elif not expression_list[i].isdigit() and i < len(expression_list) - 1 and not expression_list[i + 1].isdigit():
+        elif not expression_lst[i].isdigit() and i < len(expression_lst) - 1 and not expression_lst[i + 1].isdigit():
             type(int_lst[-2:-1])
-            result = operators[expression_list[i]](int(int_lst[len(int_lst) - 2]), int(int_lst[len(int_lst) - 1]))
+            result = operators[expression_lst[i]](int(int_lst[len(int_lst) - 2]), int(int_lst[len(int_lst) - 1]))
             del int_lst[-2:]
             int_lst.append(result)
-        elif not expression_list[i].isdigit() and i == len(expression_list) - 1:
-            result = operators[expression_list[i]](int(int_lst[len(int_lst) - 2]), int(int_lst[len(int_lst) - 1]))
+        elif not expression_lst[i].isdigit() and i == len(expression_lst) - 1:
+            result = operators[expression_lst[i]](int(int_lst[len(int_lst) - 2]), int(int_lst[len(int_lst) - 1]))
             if isinstance(result, float):
                 result = int(result)
 
